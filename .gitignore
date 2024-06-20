@@ -18,3 +18,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+.env
+.editorconfig
+composer.json
+package.json
+composer.lock
