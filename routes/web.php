@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomAuthController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Middleware\AlreadyLoggedIn;
+
 
 Route::get('products', [
     ProductController::class,
@@ -27,7 +29,8 @@ Route::get('/', function () {
 Route::get('/login', [
     CustomAuthController::class,
     'login'
-]);
+])->middleware('alreadyLoggedIn');
+
 Route::get('/registration', [
     CustomAuthController::class,
     'registration'
@@ -35,17 +38,23 @@ Route::get('/registration', [
 
 Route::post("/register-user", [
     CustomAuthController::class,
-    'registerUser'])->name('register-user');
+    'registerUser'
+])->name('register-user');
 
 Route::post("/login-user", [
     CustomAuthController::class,
-    'loginUser'])->name('login-user');
+    'loginUser'
+])->name('login-user');
 
-Route::get("/dashboard", [CustomAuthController::class,
-'dashboard']);
+Route::get("/dashboard", [
+    CustomAuthController::class,
+    'dashboard'
+])->middleware('isLoggedIn');
 
-Route::get("/logout", [CustomAuthController::class,
-'logout']);
+Route::get("/logout", [
+    CustomAuthController::class,
+    'logout'
+]);
 /*
 
 
