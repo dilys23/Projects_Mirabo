@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resources/css/login.css">
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
+    <div class="container" style="margin-top: 200px; border:solid 0.1px ; width: 430px; border-radius: 10px">
+        <div class="row" style="margin: 20px 10px 10px 10px; padding: 10px">
+            <div class="content" >
                 <h4>Login</h4>
                 <hr>
                 <form action="{{route('login-user')}}" method = "post">
@@ -37,8 +38,8 @@
                         <input type="password" class="form-control" placeholder="Enter password" name="password" value="{{old('password')}}">
                         <span class="text-danger">@error('password') {{$message}}@enderror</span>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-block btn-primary" type="submit"> Login</button>
+                    <div class="form-group" style="margin: 20px 0px 10px 140px">
+                        <button class="btn btn-block btn-primary" type="submit" > Login</button>
                     </div>
                     <br>
                     <a href="registration">New User ? Register Here.</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -24,9 +25,14 @@ class ProductController extends Controller
         // return view('products.index');
 
     }
-    public function detail()
+    //Lưu trữ 1 biến trong session và lấy giá trị của biến đó trong Controller
+    public function testSession()
     {
-        
+        // Tạo session với key là 1 mảng
+        Session::put('user.id', '1');
+        Session::put('user.name', 'Công nghệ 5s');
+        $ss = Session::get('user');
+        var_dump($ss);
     }
     public function about()
     {

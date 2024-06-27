@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlreadyLoggedIn
 {
@@ -16,9 +17,13 @@ class AlreadyLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session()->has('logginId') && (url('login') == $request->url() || url('registration') == $request->url()))
-        {
-            return back();
+
+        // if(session()->has('logginId') && (url('login') == $request->url() || url('registration') == $request->url()))
+        // {
+        //     return redirect('/dashboard');
+        // }
+        if (Auth::check() && ($request->is('login') || $request->is('registration'))) {
+            return redirect()->route('dashboard');
         }
         return $next($request);
     }

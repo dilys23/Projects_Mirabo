@@ -76,6 +76,10 @@ class CustomAuthController extends Controller
         if(Session::has('loginId'))
         {
             $data =  User::where('id', '=', Session::get('loginId'))->first();
+            if($data)
+            {
+                $data = $data->toArray();
+            }
         }
         return view("auth.dashboard",compact('data') );
     }

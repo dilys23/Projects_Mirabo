@@ -30,6 +30,8 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             // \App\Http\Middleware\EncryptCookies::class,
+            // \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\AlreadyLoggedIn::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -53,7 +55,8 @@ class Kernel extends HttpKernel
      */
   // app/Http/Kernel.php
     protected $routeMiddleware = [
-    'alreadyLoggedIn' => \App\Http\Middleware\AlreadyLoggedIn::class,
+    'check.user' => \App\Http\Middleware\CheckUserLogin::class,
+    'already.logged.in' => \App\Http\Middleware\AlreadyLoggedIn::class,
     'isLoggedIn' => \App\Http\Middleware\AuthCheck::class,
     'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

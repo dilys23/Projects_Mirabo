@@ -15,9 +15,11 @@
     {{-- <h3>myphone = {{$myphone['name']}}</h3>
     <h4>numberphone = {{ $myphone['phone']}}</h4> --}}
 
-    @foreach ($myphone as $item)
+    {{-- @foreach ($myphone as $item)
     <h3>{{$item}} </h3>
-    @endforeach
+    @endforeach --}}
+
+    
 
 </body>
 </html>
